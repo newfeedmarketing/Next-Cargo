@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Next Cargo — Entregas que movem o que importa | Uruguaiana</title>
+<meta name="description" content="Fretes, entregas rápidas, malotes empresariais, documentos e demandas externas para empresas em Uruguaiana. Enquanto tua empresa trabalha, a gente entrega." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#03060f;
+  --bg-2:#060b1c;
+  --navy:#0a1430;
+  --navy-2:#0d1b3d;
+  --blue:#1f6dff;
+  --blue-bright:#2f8bff;
+  --blue-glow:#3d9bff;
+  --cyan:#36c5ff;
+  --white:#ffffff;
+  --grey:#9fb0cc;
+  --grey-dim:#6c7d9c;
+  --line:rgba(120,160,255,.14);
+  --card:rgba(18,30,62,.55);
+  --card-2:rgba(13,22,48,.65);
+  --glass-border:rgba(120,170,255,.18);
+  --radius:18px;
+  --radius-lg:26px;
+  --maxw:1200px;
+  --grad-blue:linear-gradient(135deg,#2f8bff 0%,#1f5dff 60%,#1840d8 100%);
+  --grad-text:linear-gradient(120deg,#7fbaff 0%,#3d9bff 50%,#2f8bff 100%);
+  --shadow-blue:0 18px 50px -18px rgba(31,109,255,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.font-display{font-family:'Sora',sans-serif;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+section{position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--blue-glow);
+  padding:7px 16px;border-radius:50px;
+  background:rgba(31,109,255,.1);border:1px solid rgba(61,155,255,.25);
+  margin-bottom:22px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.grad-text{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sec-head{max-width:720px;margin:0 auto 56px;text-align:center}
+.sec-head.left{margin-left:0;text-align:left}
+.sec-head h2{font-size:clamp(1.9rem,4.2vw,3rem);font-weight:700;margin-bottom:18px}
+.sec-head p{color:var(--grey);font-size:1.08rem}
+.section-pad{padding:110px 0}
+
+/* ===== BUTTONS ===== */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;justify-content:center;
+  font-family:'Sora',sans-serif;font-weight:600;font-size:.96rem;
+  padding:15px 28px;border-radius:50px;cursor:pointer;border:none;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s;
+  white-space:nowrap;
+}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--grad-blue);color:#fff;box-shadow:var(--shadow-blue)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 24px 60px -16px rgba(47,139,255,.75)}
+.btn-ghost{background:rgba(255,255,255,.04);color:#fff;border:1px solid var(--glass-border)}
+.btn-ghost:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
+.btn-wa{background:#1fb866;color:#fff;box-shadow:0 18px 46px -18px rgba(31,184,102,.6)}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 24px 60px -16px rgba(31,184,102,.75);background:#23c870}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .3s,border-color .3s,padding .3s;
+  border-bottom:1px solid transparent;padding:18px 0;
+}
+header.scrolled{
+  background:rgba(4,8,20,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);padding:12px 0;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.03em}
+.brand .logo-mark{width:40px;height:40px;flex:none}
+.brand b{color:#fff}
+.brand span{color:var(--blue-glow)}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{
+  font-size:.92rem;font-weight:500;color:var(--grey);padding:9px 15px;border-radius:50px;transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.05)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.menu-toggle{display:none;background:none;border:none;color:#fff;cursor:pointer;padding:8px}
+.menu-toggle svg{width:26px;height:26px}
+
+/* ===== BACKGROUND FX ===== */
+.bg-grid{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(120,160,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.05) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 80%);
+}
+.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0;pointer-events:none}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;padding:170px 0 90px;overflow:hidden;
+  background:
+    radial-gradient(1200px 700px at 75% 20%,rgba(31,109,255,.22),transparent 60%),
+    radial-gradient(900px 600px at 10% 90%,rgba(54,197,255,.1),transparent 60%),
+    linear-gradient(180deg,#03060f 0%,#060d22 100%);
+}
+.hero-inner{position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,5.4vw,4.1rem);font-weight:800;margin-bottom:22px}
+.hero h1 .accent{display:block;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.lead{font-size:1.18rem;color:var(--grey);max-width:540px;margin-bottom:34px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.badges{display:flex;flex-wrap:wrap;gap:10px}
+.badge{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.84rem;font-weight:500;color:#cdd9ee;
+  padding:10px 16px;border-radius:14px;
+  background:var(--card);border:1px solid var(--glass-border);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.badge svg{width:17px;height:17px;color:var(--blue-glow);flex:none}
+
+/* hero visual */
+.hero-visual{position:relative;height:480px}
+.hero-card{
+  position:absolute;border-radius:var(--radius);background:var(--card);
+  border:1px solid var(--glass-border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.8);padding:20px;
+}
+.route-svg{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.route-path{fill:none;stroke:url(#routeGrad);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:10 8;opacity:.55;animation:dash 3s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-200}}
+.pin{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(54,197,255,.2),0 0 16px var(--cyan);z-index:2}
+.pin::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(54,197,255,.4);animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.2);opacity:0}}
+.hc-main{top:30px;left:6%;right:18%;padding:24px}
+.hc-row{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.hc-row:last-child{margin-bottom:0}
+.hc-ico{width:44px;height:44px;border-radius:12px;background:var(--grad-blue);display:grid;place-items:center;flex:none;box-shadow:var(--shadow-blue)}
+.hc-ico svg{width:22px;height:22px;color:#fff}
+.hc-txt b{display:block;font-family:'Sora';font-size:.96rem;font-weight:600}
+.hc-txt span{font-size:.8rem;color:var(--grey)}
+.hc-track{bottom:38px;right:2%;width:230px;padding:18px}
+.hc-track .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.hc-track .top b{font-family:'Sora';font-size:.9rem}
+.tag-live{font-size:.66rem;font-weight:700;letter-spacing:.1em;color:#23c870;background:rgba(35,200,112,.12);padding:4px 9px;border-radius:50px;display:inline-flex;align-items:center;gap:5px}
+.tag-live .d{width:6px;height:6px;border-radius:50%;background:#23c870;animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.3}}
+.progress{height:6px;border-radius:50px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:10px}
+.progress i{display:block;height:100%;width:72%;border-radius:50px;background:var(--grad-blue)}
+.hc-track small{font-size:.74rem;color:var(--grey)}
+.hc-float{top:0;right:6%;padding:14px 18px;display:flex;align-items:center;gap:12px;animation:floaty 4s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-12px)}}
+.hc-float .num{font-family:'Sora';font-weight:700;font-size:1.5rem;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hc-float small{font-size:.72rem;color:var(--grey);display:block;line-height:1.3}
+
+/* ===== TRUST STRIP ===== */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(6,11,28,.6);padding:30px 0}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.trust-item .n{font-family:'Sora';font-weight:700;font-size:2rem;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.trust-item p{font-size:.86rem;color:var(--grey);margin-top:2px}
+
+/* ===== PROBLEM ===== */
+.problem{background:linear-gradient(180deg,#060d22,#03060f)}
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pain-card{
+  background:var(--card-2);border:1px solid var(--glass-border);border-radius:var(--radius);padding:28px;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform .3s,border-color .3s,background .3s;
+}
+.pain-card:hover{transform:translateY(-6px);border-color:rgba(61,155,255,.4);background:var(--card)}
+.pain-ico{width:52px;height:52px;border-radius:14px;background:rgba(31,109,255,.12);border:1px solid rgba(61,155,255,.25);display:grid;place-items:center;margin-bottom:18px}
+.pain-ico svg{width:24px;height:24px;color:var(--blue-glow)}
+.pain-card h4{font-size:1.06rem;font-weight:600;margin-bottom:8px}
+.pain-card p{font-size:.9rem;color:var(--grey)}
+
+/* ===== SOLUTION ===== */
+.solution{background:#03060f}
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.sol-list{list-style:none;display:grid;gap:14px;margin:28px 0 32px}
+.sol-list li{display:flex;align-items:center;gap:14px;font-size:1.02rem;font-weight:500;padding:14px 18px;border-radius:14px;background:var(--card-2);border:1px solid var(--line);transition:transform .25s,border-color .25s}
+.sol-list li:hover{transform:translateX(6px);border-color:rgba(61,155,255,.4)}
+.sol-list .chk{width:26px;height:26px;border-radius:50%;background:var(--grad-blue);display:grid;place-items:center;flex:none}
+.sol-list .chk svg{width:15px;height:15px;color:#fff}
+.impact{
+  font-family:'Sora';font-weight:700;font-size:1.5rem;line-height:1.3;margin:6px 0 0;
+  background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.sol-visual{
+  position:relative;border-radius:var(--radius-lg);padding:38px;
+  background:radial-gradient(600px 400px at 30% 20%,rgba(31,109,255,.25),transparent),linear-gradient(160deg,#0a1430,#060d22);
+  border:1px solid var(--glass-border);overflow:hidden;min-height:440px;
+}
+.sol-visual .ring{position:absolute;border-radius:50%;border:1px solid rgba(120,170,255,.16)}
+.r1{width:340px;height:340px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.r2{width:480px;height:480px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.r3{width:620px;height:620px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.sol-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2}
+.sol-center .badge-lg{width:88px;height:88px;border-radius:24px;background:var(--grad-blue);display:grid;place-items:center;margin:0 auto 14px;box-shadow:var(--shadow-blue)}
+.sol-center .badge-lg svg{width:42px;height:42px;color:#fff}
+.sol-center b{font-family:'Sora';font-size:1.1rem;display:block}
+.sol-center span{font-size:.84rem;color:var(--grey)}
+.orbit{position:absolute;width:46px;height:46px;border-radius:13px;background:var(--card);border:1px solid var(--glass-border);display:grid;place-items:center;backdrop-filter:blur(8px);z-index:3}
+.orbit svg{width:22px;height:22px;color:var(--blue-glow)}
+.o1{top:14%;left:18%}.o2{top:20%;right:14%}.o3{bottom:18%;left:12%}.o4{bottom:14%;right:18%}.o5{top:46%;right:6%}
+
+/* ===== SERVICES ===== */
+.services{background:linear-gradient(180deg,#03060f,#060d22)}
+.cards-svc{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.svc-card{
+  position:relative;background:var(--card-2);border:1px solid var(--glass-border);border-radius:var(--radius);
+  padding:26px;backdrop-filter:blur(10px);transition:transform .3s,border-color .3s;overflow:hidden;
+}
+.svc-card::before{content:"";position:absolute;inset:0;background:var(--grad-blue);opacity:0;transition:opacity .3s;z-index:0}
+.svc-card:hover{transform:translateY(-8px);border-color:rgba(61,155,255,.5)}
+.svc-card>*{position:relative;z-index:1}
+.svc-ico{width:54px;height:54px;border-radius:14px;background:var(--grad-blue);display:grid;place-items:center;margin-bottom:18px;box-shadow:var(--shadow-blue)}
+.svc-ico svg{width:26px;height:26px;color:#fff}
+.svc-card h4{font-size:1.04rem;font-weight:600;margin-bottom:9px}
+.svc-card p{font-size:.88rem;color:var(--grey)}
+
+/* ===== PRICING / MODALIDADES ===== */
+.modal-sec{background:#060d22}
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.price-card{
+  position:relative;border-radius:var(--radius-lg);padding:36px 30px;
+  background:linear-gradient(165deg,var(--card),var(--card-2));border:1px solid var(--glass-border);
+  backdrop-filter:blur(12px);transition:transform .3s,border-color .3s,box-shadow .3s;display:flex;flex-direction:column;
+}
+.price-card:hover{transform:translateY(-8px);border-color:rgba(61,155,255,.5);box-shadow:var(--shadow-blue)}
+.price-card.feat{border-color:rgba(61,155,255,.55);background:linear-gradient(165deg,rgba(31,109,255,.16),var(--card-2))}
+.price-tag-top{position:absolute;top:-13px;left:50%;transform:translateX(-50%);font-family:'Sora';font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--grad-blue);padding:6px 16px;border-radius:50px;box-shadow:var(--shadow-blue)}
+.price-ico{width:54px;height:54px;border-radius:14px;background:rgba(31,109,255,.14);border:1px solid rgba(61,155,255,.3);display:grid;place-items:center;margin-bottom:20px}
+.price-ico svg{width:26px;height:26px;color:var(--blue-glow)}
+.price-card h3{font-size:1.25rem;font-weight:700;margin-bottom:12px}
+.price-card .desc{font-size:.92rem;color:var(--grey);margin-bottom:24px;flex:1}
+.price-val{display:flex;align-items:baseline;gap:8px;margin-bottom:24px}
+.price-val .small{font-size:.78rem;color:var(--grey-dim);align-self:flex-start;margin-top:6px}
+.price-val .big{font-family:'Sora';font-weight:800;font-size:2.6rem;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.price-val .unit{font-size:.92rem;color:var(--grey)}
+.price-val.text .big{font-size:1.5rem}
+.price-card .btn{width:100%}
+
+/* ===== RECURRING ===== */
+.recurring{background:linear-gradient(135deg,#0a1a44,#08122e);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rec-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center}
+.rec-benes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.rec-bene{display:flex;align-items:center;gap:11px;font-size:.96rem;font-weight:500;color:#dbe5f7}
+.rec-bene .chk{width:24px;height:24px;border-radius:50%;background:rgba(54,197,255,.16);border:1px solid rgba(54,197,255,.4);display:grid;place-items:center;flex:none}
+.rec-bene .chk svg{width:14px;height:14px;color:var(--cyan)}
+.rec-cal{
+  background:var(--card);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:28px;backdrop-filter:blur(14px);box-shadow:0 30px 70px -30px rgba(0,0,0,.7);
+}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.cal-head b{font-family:'Sora';font-size:1.05rem}
+.cal-head .pill{font-size:.72rem;color:var(--blue-glow);background:rgba(31,109,255,.14);padding:5px 12px;border-radius:50px;border:1px solid rgba(61,155,255,.3)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+.cal-grid span{aspect-ratio:1;display:grid;place-items:center;font-size:.78rem;color:var(--grey);border-radius:9px;background:rgba(255,255,255,.03)}
+.cal-grid span.on{background:var(--grad-blue);color:#fff;font-weight:600;box-shadow:var(--shadow-blue)}
+.cal-grid span.hd{background:none;color:var(--grey-dim);font-weight:600;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em}
+
+/* ===== CLIENTS ===== */
+.clients{
+  background:
+    radial-gradient(900px 500px at 50% 0%,rgba(31,109,255,.2),transparent 60%),
+    linear-gradient(180deg,#040a1c,#081230);
+  overflow:hidden;
+}
+.client-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-bottom:40px}
+.client-card{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  padding:26px 16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--glass-border);backdrop-filter:blur(12px);
+  transition:transform .3s,border-color .3s,box-shadow .3s;text-align:center;
+}
+.client-card:hover{transform:translateY(-8px);border-color:rgba(61,155,255,.55);box-shadow:var(--shadow-blue)}
+.client-logo{
+  width:96px;height:96px;border-radius:50%;flex:none;
+  background:#fff;border:2px solid rgba(61,155,255,.35);
+  display:grid;place-items:center;overflow:hidden;
+  box-shadow:0 10px 30px -10px rgba(0,0,0,.6);transition:border-color .3s;
+}
+.client-card:hover .client-logo{border-color:var(--cyan)}
+.client-logo img{width:100%;height:100%;object-fit:contain;padding:10px}
+/* monogram placeholder (used until real logo dropped in) */
+.client-logo .mono{font-family:'Sora';font-weight:800;font-size:1.5rem;color:#0a1430;letter-spacing:-.04em;text-align:center;line-height:1}
+.client-name{font-size:.9rem;font-weight:600;color:#eaf1ff}
+.client-note{text-align:center;max-width:680px;margin:0 auto 12px;color:var(--grey);font-size:1.02rem}
+.client-sub{text-align:center;max-width:620px;margin:0 auto 34px;color:var(--blue-glow);font-size:.98rem;font-style:italic}
+.clients .center-cta{text-align:center}
+
+/* ===== EVENTS ===== */
+.events{background:#03060f}
+.event-card{
+  position:relative;border-radius:var(--radius-lg);padding:50px;overflow:hidden;
+  background:linear-gradient(120deg,#0a1a44 0%,#0c2256 50%,#081230 100%);border:1px solid var(--glass-border);
+  display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+}
+.event-card .glow-e{position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(54,197,255,.18);filter:blur(90px);top:-120px;right:-80px}
+.event-card>*{position:relative;z-index:1}
+.event-tags{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}
+.event-tag{display:inline-flex;align-items:center;gap:8px;font-size:.86rem;font-weight:500;padding:9px 15px;border-radius:50px;background:rgba(255,255,255,.06);border:1px solid var(--glass-border)}
+.event-tag svg{width:16px;height:16px;color:var(--cyan)}
+.event-visual{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.event-visual .ev-box{aspect-ratio:1;border-radius:16px;background:var(--card);border:1px solid var(--glass-border);display:grid;place-items:center;backdrop-filter:blur(10px)}
+.event-visual .ev-box svg{width:42px;height:42px;color:var(--blue-glow)}
+.event-visual .ev-box.hl{background:var(--grad-blue);box-shadow:var(--shadow-blue)}
+.event-visual .ev-box.hl svg{color:#fff}
+
+/* ===== SEGMENTS ===== */
+.segments{background:linear-gradient(180deg,#03060f,#060d22)}
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.seg-chip{
+  display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:14px;
+  background:var(--card-2);border:1px solid var(--line);font-size:.94rem;font-weight:500;
+  transition:transform .25s,border-color .25s,background .25s;
+}
+.seg-chip:hover{transform:translateY(-4px);border-color:rgba(61,155,255,.45);background:var(--card)}
+.seg-chip .si{width:38px;height:38px;border-radius:10px;background:rgba(31,109,255,.12);border:1px solid rgba(61,155,255,.25);display:grid;place-items:center;flex:none}
+.seg-chip .si svg{width:19px;height:19px;color:var(--blue-glow)}
+
+/* ===== BENEFITS ===== */
+.benefits{background:#060d22}
+.cards-bene{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.bene-card{
+  padding:26px;border-radius:var(--radius);background:var(--card-2);border:1px solid var(--glass-border);
+  backdrop-filter:blur(10px);transition:transform .3s,border-color .3s;
+}
+.bene-card:hover{transform:translateY(-6px);border-color:rgba(61,155,255,.45)}
+.bene-ico{width:50px;height:50px;border-radius:13px;background:rgba(31,109,255,.12);border:1px solid rgba(61,155,255,.25);display:grid;place-items:center;margin-bottom:16px}
+.bene-ico svg{width:24px;height:24px;color:var(--blue-glow)}
+.bene-card h4{font-size:1.02rem;font-weight:600;margin-bottom:7px}
+.bene-card p{font-size:.87rem;color:var(--grey)}
+
+/* ===== HOW IT WORKS ===== */
+.how{background:linear-gradient(180deg,#060d22,#03060f)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;position:relative}
+.steps::before{content:"";position:absolute;top:34px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,transparent,rgba(61,155,255,.4),transparent);z-index:0}
+.step{position:relative;z-index:1;text-align:center}
+.step-n{
+  width:68px;height:68px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;
+  background:linear-gradient(160deg,#0d1b3d,#0a1430);border:1px solid rgba(61,155,255,.4);position:relative;
+}
+.step-n svg{width:28px;height:28px;color:var(--blue-glow)}
+.step-n .b{position:absolute;top:-6px;right:-6px;width:26px;height:26px;border-radius:50%;background:var(--grad-blue);color:#fff;font-family:'Sora';font-weight:700;font-size:.82rem;display:grid;place-items:center;box-shadow:var(--shadow-blue)}
+.step h4{font-size:1rem;font-weight:600;margin-bottom:8px}
+.step p{font-size:.85rem;color:var(--grey)}
+
+/* ===== FINAL CTA ===== */
+.final-cta{padding:0 0 110px}
+.cta-box{
+  position:relative;border-radius:var(--radius-lg);padding:64px 48px;text-align:center;overflow:hidden;
+  background:linear-gradient(120deg,#0c2256,#1240b0 55%,#0a1a44);border:1px solid rgba(61,155,255,.4);
+}
+.cta-box .bg-grid{opacity:.6}
+.cta-box .glow-c{position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(54,197,255,.22);filter:blur(100px);top:-180px;left:50%;transform:translateX(-50%)}
+.cta-box>*{position:relative;z-index:2}
+.cta-box h2{font-size:clamp(2rem,4.4vw,3rem);font-weight:800;margin-bottom:16px}
+.cta-box p{font-size:1.12rem;color:#cfe0ff;max-width:600px;margin:0 auto 32px}
+.cta-box .slogan{margin-top:30px;font-family:'Sora';font-weight:600;font-size:1.05rem;color:#fff;opacity:.85;letter-spacing:.01em}
+.cta-box .slogan b{color:var(--cyan)}
+
+/* ===== FOOTER ===== */
+footer{background:#02050d;border-top:1px solid var(--line);padding:70px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px;margin-bottom:48px}
+.foot-brand .brand{margin-bottom:18px}
+.foot-brand p{color:var(--grey);font-size:.92rem;max-width:300px;margin-bottom:20px}
+.foot-tags{display:flex;flex-wrap:wrap;gap:8px}
+.foot-tags span{font-size:.76rem;color:#cdd9ee;padding:7px 12px;border-radius:10px;background:var(--card-2);border:1px solid var(--line)}
+.foot-col h5{font-family:'Sora';font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-dim);margin-bottom:18px}
+.foot-col a,.foot-col p{display:flex;align-items:center;gap:10px;color:var(--grey);font-size:.92rem;margin-bottom:12px;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-col svg{width:17px;height:17px;color:var(--blue-glow);flex:none}
+.foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-bottom p{font-size:.84rem;color:var(--grey-dim)}
+.foot-bottom .made{font-size:.84rem;color:var(--grey-dim)}
+
+/* ===== FLOAT WHATSAPP ===== */
+.wa-float{
+  position:fixed;bottom:26px;right:26px;z-index:90;width:60px;height:60px;border-radius:50%;
+  background:#1fb866;display:grid;place-items:center;box-shadow:0 14px 40px -10px rgba(31,184,102,.7);
+  transition:transform .25s;animation:waPulse 2.6s ease-in-out infinite;
+}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:32px;height:32px;color:#fff}
+@keyframes waPulse{0%,100%{box-shadow:0 14px 40px -10px rgba(31,184,102,.7),0 0 0 0 rgba(31,184,102,.5)}50%{box-shadow:0 14px 40px -10px rgba(31,184,102,.7),0 0 0 14px rgba(31,184,102,0)}}
+
+/* ===== REVEAL ANIM ===== */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:50px}
+  .hero-visual{height:420px;max-width:520px}
+  .sol-grid,.rec-grid,.event-card{grid-template-columns:1fr;gap:38px}
+  .cards-4,.cards-svc,.cards-bene{grid-template-columns:repeat(2,1fr)}
+  .cards-3{grid-template-columns:1fr;max-width:460px;margin:0 auto}
+  .client-grid{grid-template-columns:repeat(3,1fr)}
+  .seg-grid{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr);gap:30px}
+  .steps::before{display:none}
+  .event-card{padding:38px}
+}
+@media(max-width:680px){
+  .section-pad{padding:74px 0}
+  .nav-links{display:none}
+  .nav-cta .btn-ghost{display:none}
+  .menu-toggle{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:16px;right:16px;background:rgba(6,11,28,.97);backdrop-filter:blur(20px);border:1px solid var(--line);border-radius:18px;padding:14px;gap:4px}
+  .nav-links.open a{padding:13px 16px;width:100%}
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:28px}
+  .cards-4,.cards-svc,.cards-bene,.seg-grid,.rec-benes{grid-template-columns:1fr}
+  .client-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .steps{grid-template-columns:1fr}
+  .hero h1{font-size:2.3rem}
+  .hero p.lead{font-size:1.05rem}
+  .cta-box{padding:44px 24px}
+  .event-card{padding:28px}
+  .event-visual{display:none}
+  .hero-btns .btn{flex:1}
+  .wa-float{width:54px;height:54px;bottom:18px;right:18px}
+  .client-logo{width:84px;height:84px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#inicio" class="brand">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="48" height="48" rx="12" fill="url(#lg)"/>
+        <path d="M12 34V14l11 13V14l13 16V18" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#2f8bff"/><stop offset="1" stop-color="#1840d8"/></linearGradient></defs>
+      </svg>
+      <span><b>NEXT</b><span>CARGO</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#inicio">Início</a>
+      <a href="#solucoes">Soluções</a>
+      <a href="#empresas">Para empresas</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://wa.me/5555996657258" target="_blank" rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+        Solicitar pelo WhatsApp
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="bg-grid"></div>
+  <div class="glow" style="width:560px;height:560px;background:#1f6dff;top:-120px;right:-80px"></div>
+  <div class="glow" style="width:420px;height:420px;background:#36c5ff;bottom:-160px;left:-120px;opacity:.3"></div>
+  <svg class="route-svg" viewBox="0 0 1200 700" preserveAspectRatio="none" style="opacity:.5;z-index:1">
+    <defs><linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f8bff"/><stop offset="1" stop-color="#36c5ff"/></linearGradient></defs>
+    <path class="route-path" d="M-50 480 C 250 480, 320 260, 600 320 S 980 180, 1260 240"/>
+    <path class="route-path" style="animation-delay:1.2s;opacity:.3" d="M-50 600 C 300 560, 500 640, 760 540 S 1050 600, 1260 520"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow reveal"><span class="dot"></span> Logística empresarial em Uruguaiana</span>
+      <h1 class="reveal d1">Enquanto tua empresa trabalha, <span class="accent">a gente entrega.</span></h1>
+      <p class="lead reveal d2">Fretes, entregas rápidas, malotes empresariais, documentos e demandas externas para empresas em Uruguaiana — com agilidade, organização e compromisso.</p>
+      <div class="hero-btns reveal d3">
+        <a href="https://wa.me/5555996657258" target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+          Solicitar pelo WhatsApp
+        </a>
+        <a href="#solucoes" class="btn btn-ghost">Conhecer soluções
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="badges reveal d4">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg> Empresa com CNPJ</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 001 1h4" /><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg> Emissão de nota fiscal</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> Atendimento em Uruguaiana</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" stroke-linejoin="round"/></svg> Entregas rápidas e recorrentes</span>
+      </div>
+    </div>
+    <div class="hero-visual reveal d2">
+      <div class="hero-card hc-main">
+        <div class="hc-row">
+          <div class="hc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h13v8H3zM16 10h3l2 3v2h-5z" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.6"/><circle cx="18" cy="17" r="1.6"/></svg></div>
+          <div class="hc-txt"><b>Frete com camioneta</b><span>Volumes maiores e sob medida</span></div>
+        </div>
+        <div class="hc-row">
+          <div class="hc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5" stroke-linecap="round"/></svg></div>
+          <div class="hc-txt"><b>Malotes & documentos</b><span>Entrega empresarial segura</span></div>
+        </div>
+        <div class="hc-row">
+          <div class="hc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" stroke-linejoin="round"/></svg></div>
+          <div class="hc-txt"><b>Entregas rápidas</b><span>Agilidade dentro da cidade</span></div>
+        </div>
+      </div>
+      <div class="hero-card hc-track">
+        <div class="top"><b>Entrega em rota</b><span class="tag-live"><span class="d"></span>AO VIVO</span></div>
+        <div class="progress"><i></i></div>
+        <small>Coleta concluída · a caminho do destino</small>
+      </div>
+      <div class="hero-card hc-float">
+        <div><div class="num">+9</div><small>segmentos<br/>atendidos</small></div>
+      </div>
+      <span class="pin" style="top:24%;left:12%"></span>
+      <span class="pin" style="bottom:30%;right:10%"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST STRIP ================= -->
+<div class="trust">
+  <div class="wrap trust-grid">
+    <div class="trust-item reveal"><div class="n">+9</div><p>Empresas parceiras</p></div>
+    <div class="trust-item reveal d1"><div class="n">100%</div><p>Atendimento local</p></div>
+    <div class="trust-item reveal d2"><div class="n">R$10</div><p>A partir de, por entrega</p></div>
+    <div class="trust-item reveal d3"><div class="n">7 dias</div><p>Entregas recorrentes</p></div>
+  </div>
+</div>
+
+<!-- ================= PROBLEM ================= -->
+<section class="problem section-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> O problema</span>
+      <h2>Sua empresa ainda <span class="grad-text">perde tempo</span> com entregas?</h2>
+      <p>Levar documentos, buscar assinaturas, entregar malotes, retirar materiais ou transportar mercadorias pode parecer simples — mas tira tempo da equipe e atrasa a rotina da empresa.</p>
+    </div>
+    <div class="cards-4">
+      <div class="pain-card reveal">
+        <div class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0" stroke-linecap="round"/></svg></div>
+        <h4>Funcionários fora do escritório</h4>
+        <p>Sua equipe perde tempo em deslocamentos que poderiam ser terceirizados.</p>
+      </div>
+      <div class="pain-card reveal d1">
+        <div class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Demandas urgentes no meio do dia</h4>
+        <p>Documentos, contratos e malotes que simplesmente não podem esperar.</p>
+      </div>
+      <div class="pain-card reveal d2">
+        <div class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12" stroke-linecap="round"/><path d="M19 16l3 3-3 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Entregas sem organização</h4>
+        <p>Quando não existe logística, tudo vira improviso e correria.</p>
+      </div>
+      <div class="pain-card reveal d3">
+        <div class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></div>
+        <h4>Tempo perdido com tarefas externas</h4>
+        <p>Enquanto alguém sai para entregar, outra parte da operação fica parada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOLUTION ================= -->
+<section class="solution section-pad">
+  <div class="wrap sol-grid">
+    <div class="reveal">
+      <span class="eyebrow"><span class="dot"></span> A solução</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;margin-bottom:18px">A Next Cargo <span class="grad-text">resolve pra você.</span></h2>
+      <p style="color:var(--grey);font-size:1.06rem">A gente cuida das entregas, fretes e demandas externas da sua empresa para que sua equipe possa focar no que realmente importa: atender melhor, vender mais e manter a operação funcionando.</p>
+      <ul class="sol-list">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Entregas rápidas</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Malotes empresariais &amp; documentos</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Fretes leves e fretes com camioneta</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Entregas recorrentes e demandas externas</li>
+      </ul>
+      <p class="impact reveal">Você foca no negócio. A gente cuida do caminho.</p>
+    </div>
+    <div class="sol-visual reveal d2">
+      <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+      <div class="orbit o1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8" stroke-linecap="round"/></svg></div>
+      <div class="orbit o2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" stroke-linejoin="round"/></svg></div>
+      <div class="orbit o3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="13" height="9" rx="1"/><path d="M16 11h3l2 3v3h-5z" stroke-linejoin="round"/></svg></div>
+      <div class="orbit o4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <div class="orbit o5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+      <div class="sol-center">
+        <div class="badge-lg">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M12 34V14l11 13V14l13 16V18" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <b>Next Cargo</b>
+        <span>Centro logístico da sua rotina</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services section-pad" id="solucoes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Soluções</span>
+      <h2>Soluções para a rotina da <span class="grad-text">sua empresa</span></h2>
+      <p>De uma entrega simples a uma demanda recorrente, a Next Cargo oferece suporte logístico para diferentes necessidades do dia a dia.</p>
+    </div>
+    <div class="cards-svc">
+      <div class="svc-card reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke-linecap="round"/></svg></div>
+        <h4>Malotes empresariais</h4>
+        <p>Transporte de malotes entre empresas, setores, parceiros, clientes e escritórios.</p>
+      </div>
+      <div class="svc-card reveal d1">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 001 1h4"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/><path d="M9 13h6M9 17h4" stroke-linecap="round"/></svg></div>
+        <h4>Documentos e contratos</h4>
+        <p>Ideal para advocacias, imobiliárias, contabilidades, despachantes e escritórios de comércio exterior.</p>
+      </div>
+      <div class="svc-card reveal d2">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" stroke-linejoin="round"/></svg></div>
+        <h4>Entregas rápidas</h4>
+        <p>Para quem precisa enviar algo com agilidade dentro de Uruguaiana.</p>
+      </div>
+      <div class="svc-card reveal d3">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12" stroke-linejoin="round"/></svg></div>
+        <h4>Fretes leves</h4>
+        <p>Transporte de caixas, materiais, produtos e pequenas mercadorias.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h13v8H3zM16 10h3l2 3v2h-5z" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8"/><circle cx="18" cy="17" r="1.8"/></svg></div>
+        <h4>Fretes com camioneta</h4>
+        <p>Solução para volumes maiores, equipamentos, mercadorias, coolers e freezers.</p>
+      </div>
+      <div class="svc-card reveal d1">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Demandas externas</h4>
+        <p>Coletas, retiradas, busca de assinaturas e entregas corporativas.</p>
+      </div>
+      <div class="svc-card reveal d2">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h.01M12 14h.01M16 14h.01" stroke-linecap="round"/></svg></div>
+        <h4>Entregas recorrentes</h4>
+        <p>Para empresas que precisam de entregas toda semana com mais organização.</p>
+      </div>
+      <div class="svc-card reveal d3">
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 21V8l7-5 7 5v13" stroke-linejoin="round"/><path d="M9 21v-6h6v6M3 11l9-6 9 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Eventos e confraternizações</h4>
+        <p>Transporte de bebidas, coolers, freezers e volumes para churrascos, eventos e encontros corporativos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODALIDADES / PRICING ================= -->
+<section class="modal-sec section-pad" id="empresas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Modalidades</span>
+      <h2>Escolha a solução ideal para <span class="grad-text">sua demanda</span></h2>
+      <p>Três formatos pensados para a realidade da sua empresa — do documento urgente ao transporte sob medida.</p>
+    </div>
+    <div class="cards-3">
+      <div class="price-card reveal">
+        <div class="price-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M9 13h6" stroke-linecap="round"/></svg></div>
+        <h3>Malotes, documentos e entregas empresariais</h3>
+        <p class="desc">Ideal para empresas que precisam enviar documentos, contratos, malotes ou pequenas demandas externas.</p>
+        <div class="price-val"><span class="small">A partir de</span><span class="big">R$10</span><span class="unit">por entrega</span></div>
+        <a href="https://wa.me/5555996657258?text=Quero%20solicitar%20uma%20entrega%20empresarial" target="_blank" rel="noopener" class="btn btn-primary">Solicitar entrega</a>
+      </div>
+      <div class="price-card feat reveal d1">
+        <span class="price-tag-top">Mais procurado</span>
+        <div class="price-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12" stroke-linejoin="round"/></svg></div>
+        <h3>Caixas, mercadorias e materiais</h3>
+        <p class="desc">Para lojas, comércios e empresas que precisam transportar produtos, materiais ou volumes leves dentro da cidade.</p>
+        <div class="price-val text"><span class="big">Agilidade para o dia a dia</span></div>
+        <a href="https://wa.me/5555996657258?text=Quero%20um%20orçamento%20de%20frete" target="_blank" rel="noopener" class="btn btn-primary">Pedir orçamento</a>
+      </div>
+      <div class="price-card reveal d2">
+        <div class="price-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h13v8H3zM16 10h3l2 3v2h-5z" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8"/><circle cx="18" cy="17" r="1.8"/></svg></div>
+        <h3>Volumes maiores e transporte sob medida</h3>
+        <p class="desc">Ideal para mercadorias maiores, equipamentos, freezers, coolers, bebidas e materiais.</p>
+        <div class="price-val"><span class="small">A partir de</span><span class="big">R$40</span></div>
+        <a href="https://wa.me/5555996657258?text=Quero%20solicitar%20um%20frete%20com%20camioneta" target="_blank" rel="noopener" class="btn btn-primary">Solicitar frete</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RECURRING ================= -->
+<section class="recurring section-pad">
+  <div class="wrap rec-grid">
+    <div class="reveal">
+      <span class="eyebrow"><span class="dot"></span> Entregas recorrentes</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;margin-bottom:18px">Sua empresa precisa de <span class="grad-text">entregas toda semana?</span></h2>
+      <p style="color:var(--grey);font-size:1.06rem;margin-bottom:28px">A Next Cargo pode facilitar sua rotina com entregas programadas, malotes recorrentes, fretes empresariais e demandas fixas em Uruguaiana.</p>
+      <div class="rec-benes">
+        <div class="rec-bene"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Mais previsibilidade</div>
+        <div class="rec-bene"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Rotina mais organizada</div>
+        <div class="rec-bene"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Menos improviso</div>
+        <div class="rec-bene"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Entregas com mais agilidade</div>
+        <div class="rec-bene"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Atendimento facilitado</div>
+        <div class="rec-bene"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Suporte para demandas frequentes</div>
+      </div>
+      <a href="https://wa.me/5555996657258?text=Quero%20organizar%20minhas%20entregas%20recorrentes" target="_blank" rel="noopener" class="btn btn-wa" style="margin-top:30px">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>
+        Organizar minhas entregas
+      </a>
+    </div>
+    <div class="rec-cal reveal d2">
+      <div class="cal-head"><b>Agenda de entregas</b><span class="pill">Programado</span></div>
+      <div class="cal-grid">
+        <span class="hd">S</span><span class="hd">T</span><span class="hd">Q</span><span class="hd">Q</span><span class="hd">S</span><span class="hd">S</span><span class="hd">D</span>
+        <span>1</span><span class="on">2</span><span>3</span><span class="on">4</span><span>5</span><span>6</span><span>7</span>
+        <span>8</span><span class="on">9</span><span>10</span><span class="on">11</span><span>12</span><span>13</span><span>14</span>
+        <span>15</span><span class="on">16</span><span>17</span><span class="on">18</span><span>19</span><span>20</span><span>21</span>
+        <span>22</span><span class="on">23</span><span>24</span><span class="on">25</span><span>26</span><span>27</span><span>28</span>
+      </div>
+      <div style="margin-top:18px;display:flex;align-items:center;gap:10px;font-size:.84rem;color:var(--grey)">
+        <span style="width:14px;height:14px;border-radius:5px;background:var(--blue);box-shadow:var(--shadow-blue)"></span>
+        Malotes e entregas fixas toda terça e quinta
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLIENTS ================= -->
+<section class="clients section-pad" id="clientes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Prova social</span>
+      <h2>Empresas que já confiam na <span class="grad-text">Next Cargo</span></h2>
+      <p>Empresas de diferentes segmentos já contam com a Next Cargo para ganhar tempo, organizar demandas e manter suas entregas em movimento.</p>
+    </div>
+    <div class="client-grid">
+      <!-- Para inserir a logo real: troque o <span class="mono"> por <img src="assets/logos/arquivo.png" alt="Nome"> -->
+      <div class="client-card reveal"><div class="client-logo"><span class="mono">RA</span></div><div class="client-name">Rafaela Fashion &amp; Acessórios</div></div>
+      <div class="client-card reveal d1"><div class="client-logo"><span class="mono">SN</span></div><div class="client-name">Salgados da Nati</div></div>
+      <div class="client-card reveal d2"><div class="client-logo"><span class="mono">CP</span></div><div class="client-name">Cestão Popular</div></div>
+      <div class="client-card reveal d3"><div class="client-logo"><span class="mono">EL</span></div><div class="client-name">EstéticLab</div></div>
+      <div class="client-card reveal d4"><div class="client-logo"><span class="mono">CC</span></div><div class="client-name">Chima Charme</div></div>
+      <div class="client-card reveal"><div class="client-logo"><span class="mono">EI</span></div><div class="client-name">El Ico Confecções</div></div>
+      <div class="client-card reveal d1"><div class="client-logo"><span class="mono">CE</span></div><div class="client-name">Conveniência Express</div></div>
+      <div class="client-card reveal d2"><div class="client-logo"><span class="mono">CG</span></div><div class="client-name">Casa de Carnes do Gringo</div></div>
+      <div class="client-card reveal d3"><div class="client-logo"><span class="mono">VC</span></div><div class="client-name">Gráfica Via Cyber</div></div>
+      <div class="client-card reveal d4" style="justify-content:center">
+        <div class="client-logo" style="background:var(--grad-blue);border-color:var(--cyan)"><span class="mono" style="color:#fff;font-size:1.7rem">+</span></div>
+        <div class="client-name">Sua empresa aqui</div>
+      </div>
+    </div>
+    <p class="client-note reveal">Cada cliente representa uma parceria construída com compromisso, pontualidade e confiança.</p>
+    <p class="client-sub reveal d1">Se empresas de diferentes segmentos já simplificaram sua logística, a sua também pode.</p>
+    <div class="center-cta reveal d2">
+      <a href="https://wa.me/5555996657258?text=Quero%20minha%20empresa%20com%20a%20Next%20Cargo" target="_blank" rel="noopener" class="btn btn-primary">
+        Quero minha empresa com a Next Cargo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVENTS ================= -->
+<section class="events section-pad">
+  <div class="wrap">
+    <div class="event-card reveal">
+      <div class="glow-e"></div>
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Eventos &amp; confraternizações</span>
+        <h2 style="font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:700;margin-bottom:16px">Vai ter evento, churrasco ou <span class="grad-text">confraternização?</span></h2>
+        <p style="color:var(--grey);font-size:1.05rem">Faça como a <b style="color:#fff">Conveniência Express</b>: conte com a Next Cargo para transportar bebidas, coolers, freezers e volumes com agilidade e segurança dentro de Uruguaiana.</p>
+        <div class="event-tags">
+          <span class="event-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2h8l-1 6H9L8 2zM7 8h10v12a2 2 0 01-2 2H9a2 2 0 01-2-2V8z"/></svg> Transporte de bebidas</span>
+          <span class="event-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M9 4v16" stroke-linecap="round"/></svg> Coolers e freezers</span>
+          <span class="event-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg> Volumes para eventos</span>
+          <span class="event-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/></svg> Atendimento em Uruguaiana</span>
+        </div>
+        <a href="https://wa.me/5555996657258?text=Quero%20transporte%20para%20um%20evento" target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>
+          Solicitar transporte para evento
+        </a>
+      </div>
+      <div class="event-visual">
+        <div class="ev-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2h8l-1 6H9L8 2zM7 8h10v12a2 2 0 01-2 2H9a2 2 0 01-2-2V8z"/></svg></div>
+        <div class="ev-box hl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M9 4v16" stroke-linecap="round"/></svg></div>
+        <div class="ev-box hl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h13v8H3zM16 10h3l2 3v2h-5z" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.6"/><circle cx="18" cy="17" r="1.6"/></svg></div>
+        <div class="ev-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEGMENTS ================= -->
+<section class="segments section-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Para quem é</span>
+      <h2>Ideal para empresas que <span class="grad-text">não podem parar</span></h2>
+      <p>A Next Cargo atende empresas de diferentes segmentos que precisam de agilidade, confiança e praticidade para resolver entregas no dia a dia.</p>
+    </div>
+    <div class="seg-grid">
+      <div class="seg-chip reveal"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3" stroke-linecap="round"/></svg></span> Escritórios</div>
+      <div class="seg-chip reveal d1"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 5-9 5-9-5 9-5zM3 12l9 5 9-5" stroke-linejoin="round"/></svg></span> Advocacias</div>
+      <div class="seg-chip reveal d2"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V8l8-5 8 5v12" stroke-linejoin="round"/><path d="M9 20v-5h6v5" stroke-linecap="round"/></svg></span> Contabilidades</div>
+      <div class="seg-chip reveal d3"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V9l9-6 9 6v12" stroke-linejoin="round"/><path d="M9 21v-6h6v6" stroke-linecap="round"/></svg></span> Imobiliárias</div>
+      <div class="seg-chip reveal"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 001 1h4"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/></svg></span> Despachantes</div>
+      <div class="seg-chip reveal d1"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></span> Comércio exterior</div>
+      <div class="seg-chip reveal d2"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14a7 7 0 11-14 0 7 7 0 0114 0z"/><path d="M12 7v-3M9 4h6" stroke-linecap="round"/></svg></span> Clínicas</div>
+      <div class="seg-chip reveal d3"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 7v10M7 12h10" stroke-linecap="round"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg></span> Farmácias</div>
+      <div class="seg-chip reveal"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1-5h16l1 5M5 9v11h14V9" stroke-linejoin="round"/><path d="M9 13h6" stroke-linecap="round"/></svg></span> Lojas</div>
+      <div class="seg-chip reveal d1"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h13v8H3zM16 10h3l2 3v2h-5z" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.6"/><circle cx="18" cy="17" r="1.6"/></svg></span> Distribuidoras</div>
+      <div class="seg-chip reveal d2"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11h14l-1 9H6l-1-9zM8 11V8a4 4 0 018 0v3" stroke-linecap="round"/></svg></span> Restaurantes</div>
+      <div class="seg-chip reveal d3"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a5 5 0 0110 0v2" stroke-linecap="round"/></svg></span> Conveniências</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BENEFITS ================= -->
+<section class="benefits section-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Benefícios</span>
+      <h2>O que sua empresa ganha com a <span class="grad-text">Next Cargo?</span></h2>
+    </div>
+    <div class="cards-bene">
+      <div class="bene-card reveal"><div class="bene-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Mais tempo para sua equipe</h4><p>Sua equipe focada no core do negócio, não na rua.</p></div>
+      <div class="bene-card reveal d1"><div class="bene-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h4>Menos deslocamentos</h4><p>Sem trânsito, estacionamento e tempo perdido.</p></div>
+      <div class="bene-card reveal d2"><div class="bene-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" stroke-linejoin="round"/></svg></div><h4>Mais agilidade nas entregas</h4><p>Coletas e entregas resolvidas com rapidez.</p></div>
+      <div class="bene-card reveal d3"><div class="bene-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/></svg></div><h4>Atendimento local</h4><p>Equipe que conhece Uruguaiana de ponta a ponta.</p></div>
+      <div class="bene-card reveal"><div class="bene-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4" stroke-linecap="round"/></svg></div><h4>Mais organização na rotina</h4><p>Demandas previsíveis e bem encaminhadas.</p></div>
+      <div class="bene-card reveal d1"><div class="bene-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Suporte para demandas externas</h4><p>Retiradas, assinaturas e coletas sob demanda.</p></div>
+      <div class="bene-card reveal d2"><div class="bene-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 001 1h4"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/><path d="M9 13h6" stroke-linecap="round"/></svg></div><h4>Nota fiscal</h4><p>Empresa com CNPJ e emissão de nota fiscal.</p></div>
+      <div class="bene-card reveal d3"><div class="bene-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Segurança e compromisso</h4><p>Cada entrega tratada com cuidado e responsabilidade.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="how section-pad" id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Passo a passo</span>
+      <h2>Como funciona <span class="grad-text">na prática</span></h2>
+      <p>Simples, rápido e sem burocracia — do primeiro contato à entrega concluída.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-n"><span class="b">1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linejoin="round"/></svg></div>
+        <h4>Chame no WhatsApp</h4>
+        <p>Informe o que precisa ser entregue, retirado ou transportado.</p>
+      </div>
+      <div class="step reveal d1">
+        <div class="step-n"><span class="b">2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 001 1h4"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z" stroke-linejoin="round"/></svg></div>
+        <h4>Envie os detalhes</h4>
+        <p>Passe endereço, tipo de item, horário e destino.</p>
+      </div>
+      <div class="step reveal d2">
+        <div class="step-n"><span class="b">3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h4>Organizamos a coleta</h4>
+        <p>Nossa equipe direciona a melhor solução para sua demanda.</p>
+      </div>
+      <div class="step reveal d3">
+        <div class="step-n"><span class="b">4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h13v8H3zM16 10h3l2 3v2h-5z" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.6"/><circle cx="18" cy="17" r="1.6"/></svg></div>
+        <h4>A entrega é realizada</h4>
+        <p>Com agilidade, segurança e compromisso.</p>
+      </div>
+      <div class="step reveal d4">
+        <div class="step-n"><span class="b">5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h4>Sua empresa segue trabalhando</h4>
+        <p>Sem deslocar equipe e sem perder tempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta" id="contato">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div class="bg-grid"></div>
+      <div class="glow-c"></div>
+      <h2>Pronto para simplificar a logística da <span class="grad-text" style="--grad-text:linear-gradient(120deg,#bcd9ff,#fff)">sua empresa?</span></h2>
+      <p>Fale com a Next Cargo e descubra como nossas entregas podem facilitar a rotina do seu negócio em Uruguaiana.</p>
+      <a href="https://wa.me/5555996657258?text=Quero%20simplificar%20a%20logística%20da%20minha%20empresa" target="_blank" rel="noopener" class="btn btn-wa" style="font-size:1.05rem;padding:17px 34px">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>
+        Solicitar atendimento pelo WhatsApp
+      </a>
+      <p class="slogan">Next Cargo — <b>Entregas que movem o que importa.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#inicio" class="brand">
+          <svg class="logo-mark" viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="url(#lg2)"/><path d="M12 34V14l11 13V14l13 16V18" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="lg2" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#2f8bff"/><stop offset="1" stop-color="#1840d8"/></linearGradient></defs></svg>
+          <span><b>NEXT</b><span>CARGO</span></span>
+        </a>
+        <p>Entregas que movem o que importa. Logística empresarial com agilidade, organização e compromisso em Uruguaiana.</p>
+        <div class="foot-tags">
+          <span>Empresa com CNPJ</span>
+          <span>Emissão de nota fiscal</span>
+          <span>Uruguaiana – RS</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Soluções</h5>
+        <a href="#solucoes">Entregas rápidas</a>
+        <a href="#solucoes">Malotes empresariais</a>
+        <a href="#solucoes">Documentos e contratos</a>
+        <a href="#solucoes">Fretes leves e camioneta</a>
+        <a href="#solucoes">Entregas recorrentes</a>
+      </div>
+      <div class="foot-col">
+        <h5>Navegação</h5>
+        <a href="#inicio">Início</a>
+        <a href="#empresas">Para empresas</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div class="foot-col">
+        <h5>Atendimento</h5>
+        <a href="https://wa.me/5555996657258" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg> (55) 99665-7258</a>
+        <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> Uruguaiana – RS</p>
+        <a href="https://instagram.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg> Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Next Cargo. Todos os direitos reservados.</p>
+      <p class="made">Entregas que movem o que importa.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a href="https://wa.me/5555996657258" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+</a>
+
+<script>
+// Header scroll
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>30)});
+// Mobile menu
+const toggle=document.getElementById('menuToggle'),links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+// Reveal on scroll
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
