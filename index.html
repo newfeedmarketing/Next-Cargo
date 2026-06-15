@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Next Cargo — Entregas que movem o que importa | Uruguaiana</title>
 <meta name="description" content="Fretes, entregas rápidas, malotes empresariais, documentos e demandas externas para empresas em Uruguaiana. Enquanto tua empresa trabalha, a gente entrega." />
+<link rel="icon" type="image/png" href="assets/logos/favicon.png" />
+<link rel="apple-touch-icon" href="assets/logos/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -94,6 +96,9 @@ header.scrolled{
 .brand .logo-mark{width:40px;height:40px;flex:none}
 .brand b{color:#fff}
 .brand span{color:var(--blue-glow)}
+.brand-img{height:46px;width:auto;display:block;transition:height .3s}
+header.scrolled .brand-img{height:40px}
+.foot-brand .brand-img{height:54px}
 .nav-links{display:flex;align-items:center;gap:6px}
 .nav-links a{
   font-size:.92rem;font-weight:500;color:var(--grey);padding:9px 15px;border-radius:50px;transition:color .2s,background .2s;
@@ -215,6 +220,7 @@ header.scrolled{
 .sol-center .badge-lg svg{width:42px;height:42px;color:#fff}
 .sol-center b{font-family:'Sora';font-size:1.1rem;display:block}
 .sol-center span{font-size:.84rem;color:var(--grey)}
+.sol-logo{width:170px;max-width:46vw;height:auto;margin:0 auto 14px;display:block;filter:drop-shadow(0 10px 30px rgba(31,109,255,.45))}
 .orbit{position:absolute;width:46px;height:46px;border-radius:13px;background:var(--card);border:1px solid var(--glass-border);display:grid;place-items:center;backdrop-filter:blur(8px);z-index:3}
 .orbit svg{width:22px;height:22px;color:var(--blue-glow)}
 .o1{top:14%;left:18%}.o2{top:20%;right:14%}.o3{bottom:18%;left:12%}.o4{bottom:14%;right:18%}.o5{top:46%;right:6%}
@@ -296,7 +302,7 @@ header.scrolled{
   box-shadow:0 10px 30px -10px rgba(0,0,0,.6);transition:border-color .3s;
 }
 .client-card:hover .client-logo{border-color:var(--cyan)}
-.client-logo img{width:100%;height:100%;object-fit:contain;padding:10px}
+.client-logo img{width:100%;height:100%;object-fit:cover}
 /* monogram placeholder (used until real logo dropped in) */
 .client-logo .mono{font-family:'Sora';font-weight:800;font-size:1.5rem;color:#0a1430;letter-spacing:-.04em;text-align:center;line-height:1}
 .client-name{font-size:.9rem;font-weight:600;color:#eaf1ff}
@@ -446,12 +452,7 @@ footer{background:#02050d;border-top:1px solid var(--line);padding:70px 0 30px}
 <header id="header">
   <div class="wrap nav">
     <a href="#inicio" class="brand">
-      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="48" height="48" rx="12" fill="url(#lg)"/>
-        <path d="M12 34V14l11 13V14l13 16V18" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-        <defs><linearGradient id="lg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#2f8bff"/><stop offset="1" stop-color="#1840d8"/></linearGradient></defs>
-      </svg>
-      <span><b>NEXT</b><span>CARGO</span></span>
+      <img src="assets/logos/nextcargo-logo.png" alt="Next Cargo — Entregas que movem o que importa" class="brand-img" />
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#inicio">Início</a>
@@ -599,10 +600,7 @@ footer{background:#02050d;border-top:1px solid var(--line);padding:70px 0 30px}
       <div class="orbit o4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
       <div class="orbit o5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
       <div class="sol-center">
-        <div class="badge-lg">
-          <svg viewBox="0 0 48 48" fill="none"><path d="M12 34V14l11 13V14l13 16V18" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <b>Next Cargo</b>
+        <img src="assets/logos/nextcargo-logo.png" alt="Next Cargo" class="sol-logo" />
         <span>Centro logístico da sua rotina</span>
       </div>
     </div>
@@ -744,15 +742,15 @@ footer{background:#02050d;border-top:1px solid var(--line);padding:70px 0 30px}
     </div>
     <div class="client-grid">
       <!-- Para inserir a logo real: troque o <span class="mono"> por <img src="assets/logos/arquivo.png" alt="Nome"> -->
-      <div class="client-card reveal"><div class="client-logo"><span class="mono">RA</span></div><div class="client-name">Rafaela Fashion &amp; Acessórios</div></div>
-      <div class="client-card reveal d1"><div class="client-logo"><span class="mono">SN</span></div><div class="client-name">Salgados da Nati</div></div>
-      <div class="client-card reveal d2"><div class="client-logo"><span class="mono">CP</span></div><div class="client-name">Cestão Popular</div></div>
-      <div class="client-card reveal d3"><div class="client-logo"><span class="mono">EL</span></div><div class="client-name">EstéticLab</div></div>
-      <div class="client-card reveal d4"><div class="client-logo"><span class="mono">CC</span></div><div class="client-name">Chima Charme</div></div>
-      <div class="client-card reveal"><div class="client-logo"><span class="mono">EI</span></div><div class="client-name">El Ico Confecções</div></div>
-      <div class="client-card reveal d1"><div class="client-logo"><span class="mono">CE</span></div><div class="client-name">Conveniência Express</div></div>
-      <div class="client-card reveal d2"><div class="client-logo"><span class="mono">CG</span></div><div class="client-name">Casa de Carnes do Gringo</div></div>
-      <div class="client-card reveal d3"><div class="client-logo"><span class="mono">VC</span></div><div class="client-name">Gráfica Via Cyber</div></div>
+      <div class="client-card reveal"><div class="client-logo"><img src="assets/logos/cliente-rafaela-fashion.jpg" alt="Rafaela Fashion & Acessórios" loading="lazy"></div><div class="client-name">Rafaela Fashion &amp; Acessórios</div></div>
+      <div class="client-card reveal d1"><div class="client-logo"><img src="assets/logos/cliente-salgados-da-nati.jpg" alt="Salgados da Nati" loading="lazy"></div><div class="client-name">Salgados da Nati</div></div>
+      <div class="client-card reveal d2"><div class="client-logo"><img src="assets/logos/cliente-cestao-popular.png" alt="Cestão Popular" loading="lazy"></div><div class="client-name">Cestão Popular</div></div>
+      <div class="client-card reveal d3"><div class="client-logo"><img src="assets/logos/cliente-esteticlab.jpg" alt="EstéticLab" loading="lazy"></div><div class="client-name">EstéticLab</div></div>
+      <div class="client-card reveal d4"><div class="client-logo"><img src="assets/logos/cliente-chima-charme.jpg" alt="Chima Charme" loading="lazy"></div><div class="client-name">Chima Charme</div></div>
+      <div class="client-card reveal"><div class="client-logo"><img src="assets/logos/cliente-el-ico.jpg" alt="El Ico Confecções" loading="lazy"></div><div class="client-name">El Ico Confecções</div></div>
+      <div class="client-card reveal d1"><div class="client-logo"><img src="assets/logos/cliente-conveniencia-express.jpg" alt="Conveniência Express" loading="lazy"></div><div class="client-name">Conveniência Express</div></div>
+      <div class="client-card reveal d2"><div class="client-logo"><img src="assets/logos/cliente-casa-carnes-gringo.jpg" alt="Casa de Carnes do Gringo" loading="lazy"></div><div class="client-name">Casa de Carnes do Gringo</div></div>
+      <div class="client-card reveal d3"><div class="client-logo"><img src="assets/logos/cliente-grafica-via-cyber.jpg" alt="Gráfica Via Cyber" loading="lazy"></div><div class="client-name">Gráfica Via Cyber</div></div>
       <div class="client-card reveal d4" style="justify-content:center">
         <div class="client-logo" style="background:var(--grad-blue);border-color:var(--cyan)"><span class="mono" style="color:#fff;font-size:1.7rem">+</span></div>
         <div class="client-name">Sua empresa aqui</div>
@@ -905,8 +903,7 @@ footer{background:#02050d;border-top:1px solid var(--line);padding:70px 0 30px}
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#inicio" class="brand">
-          <svg class="logo-mark" viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="url(#lg2)"/><path d="M12 34V14l11 13V14l13 16V18" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="lg2" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#2f8bff"/><stop offset="1" stop-color="#1840d8"/></linearGradient></defs></svg>
-          <span><b>NEXT</b><span>CARGO</span></span>
+          <img src="assets/logos/nextcargo-logo.png" alt="Next Cargo — Entregas que movem o que importa" class="brand-img" />
         </a>
         <p>Entregas que movem o que importa. Logística empresarial com agilidade, organização e compromisso em Uruguaiana.</p>
         <div class="foot-tags">
